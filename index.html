@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="대한검정회 5급 기출 80~96회 750문항을 분석해 매번 새 50문항 모의고사를 실제 시험지 모양으로 만들어 주는 연습 앱">
 <meta property="og:title" content="달달맘한자 5급 모의고사">
-<meta property="og:description" content="매번 새로 나오는 대한검정회 5급 모의고사 · 채점 · 오답노트 · 인쇄">
+<meta property="og:description" content="대한검정회 5급 기출 80~96회 750문항을 분석해 매번 새 50문항 모의고사를 실제 시험지 모양으로 만들어 주는 연습 앱">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#E0A526">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Ccircle cx='28' cy='28' r='26' fill='%23E0A526'/%3E%3Ccircle cx='20' cy='24' r='3' fill='%233E2A14'/%3E%3Ccircle cx='36' cy='24' r='3' fill='%233E2A14'/%3E%3Cpath d='M19 34 Q28 43 37 34' fill='none' stroke='%233E2A14' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -133,7 +133,8 @@ h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}
 .q .st.hz{font-weight:600;font-size:17px}
 .bl{white-space:nowrap;display:inline-block;min-width:54px;text-align:center;position:relative}
 .bl.r{float:right}
-.bl .hand{position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);font-size:26px}
+.bl .slot{display:inline-block;width:36px;text-align:center;line-height:1}
+.bl .hand{font-size:26px;line-height:.8;display:inline-block;vertical-align:baseline}
 .op-grid{display:grid;gap:2px 10px;padding-left:18px;margin-top:2px}
 .g4{grid-template-columns:repeat(4,max-content);column-gap:22px}
 .g2{grid-template-columns:1fr 1fr}
@@ -505,8 +506,7 @@ function qHTML(q, idx, P, opt){
   if (P.kind === "retry") st.layout = LAYOUT(q.origN || q.n);
   const right = g && a === q.a;
   const numMark = g ? (right ? redCircleNum() : redSlash()) : "";
-  const hand = a ? `<span class="hand">${a}</span>` : "";
-  const blank = `<span class="bl ${st.layout === "block" ? "r" : ""}">(<span style="display:inline-block;width:36px"></span>)${hand}</span>`;
+  const blank = `<span class="bl ${st.layout === "block" ? "r" : ""}">(<span class="slot">${a ? `<span class="hand">${a}</span>` : ""}</span>)</span>`;
   const fix = g && !right ? `<span class="fix">${MK[q.a-1]}</span>` : "";
   const src = opt.showSrc && q.src ? `<span class="src">${esc(q.src)}</span>` : "";
   const exp = (g && !right && opt.showEx) || opt.forceEx ? `<div class="exp"><b>해설</b>${q.ex || "정답을 다시 확인해 보세요."}</div>` : "";
